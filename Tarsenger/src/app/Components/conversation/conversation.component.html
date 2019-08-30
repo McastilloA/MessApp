@@ -1,0 +1,68 @@
+<div class="imageContainer" [ngClass]="{'shaker': shake}">
+  <div class="container" *ngIf="user">
+    <div class="row">
+      <div class="col-md-2 mt-5 text-center">
+        <div class="m-0">
+          <img [src]="user.avatar || 'assets/img/medium_TARS.png'" alt="img-avatar"
+            class="rounded avatar_general img-fluid rounded-circle">
+          <p class="text-muted"><img src="/assets/img/{{ user.status }}.png" alt="{{ user.status }}" id="avatar"
+              class="rounded-circle"> {{ user.status }}
+          </p>
+        </div>
+        <div class="mt-friend">
+          <div *ngIf="friend">
+            <img [src]="friend.avatar || 'assets/img/medium_TARS.png'" alt="img-avatar"
+              class="rounded avatar_general img-fluid rounded-circle">
+            <p class="text-muted"><img src="/assets/img/{{ friend.status }}.png" alt="{{ friend.status }}" id="avatar"
+                class="rounded-circle"> {{ friend.status }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 mt-5">
+        <h3>{{ user.fullName }}</h3>
+        <p class="text-muted">{{ user.email }}</p>
+        <h5 class="font-italic text-shadow">{{ user.messagEveryday || 'Que piensas hoy?' | truncate: 180}}</h5>
+        <hr>
+        <div class="container-fluid overflow-chat">
+          <ul class="list-unstyled m-3">
+            <li class="d-flex justify-content-between mb-4" *ngFor="let conversation of conversations">
+              <div class="p-3 z-depth-1">
+                <div class="header">
+                  <img [src]="getUserAvatar(conversation.send )" alt="avatar" id="avatar"
+                    class="rounded img-fluid rounded-circle">
+                  <strong class="primary-font">
+                    {{ getUserFullname(conversation.send)}} </strong>
+                  <small class="pull-right text-muted"><i class="far fa-clock"></i>
+                    {{ conversation.timestamp | date:'EEEE, dd MMM yyy to h:mm:ss a' }}</small>
+                </div>
+                <hr class="w-100 mt-1">
+                <p class="mb-0 chat-init font-italic text-shadow">
+                  {{ conversation.text }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="form-group basic-textarea mt-3">
+          <textarea [(ngModel)]="textMessage" (keyup.enter)="sendMesagge()" class="form-control pl-2 my-0"
+            id="exampleFormControlTextarea2" rows="3" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          <div class="row">
+            <div class="col-md-11">
+              <div class="m-2">
+                <a><i class="far fa-file-image mr-2"></i></a>
+                <a><i class="far fa-laugh mr-2"></i></a>
+                <a (click)="sendZumbido()"><img src="/assets/img/zumbido.png" alt="zumbido" class="zumbido mr-2"></a>
+                <a><i class="fas fa-thumbs-up"></i></a>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right"
+                (click)="sendMesagge()">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

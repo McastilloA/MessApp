@@ -1,0 +1,52 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark primary-color">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    <img src="/assets/img/icon_TARS.png" alt="logo-page" class="logo-page">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMessApp"
+    aria-controls="navbarMessApp" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarMessApp">
+    <span class="navbar-text white-text">
+      <a class="nav-link" [routerLink]="['/home']"><i class="fas fa-home"></i> Home</a>
+    </span>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <span class="badge badge-danger badge-pill">2</span>
+          <i class="fas fa-beer"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <span class="badge badge-success badge-pill">1</span>
+          <i class="far fa-bell"></i></a>
+      </li>
+
+
+      <li class="nav-item dropdown btn-group" dropdown>
+        <a dropdownToggle class="nav-link dropdown-toggle waves-light" id="navbarDropdownMenuLink-58" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" mdbWavesEffect>
+          <span *ngIf="user && user.friends" class="badge badge-success badge-pill"> {{ user.friends.length }}</span>
+          <i class="fas fa-comments"></i></a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-secondary p-2" aria-labelledby="navbarDropdownMenuLink-58"
+          *ngIf="user && user.friends">
+          Hola mundo
+          <!-- <app-contact *ngFor="let friend of user.friends" [uid]="friend"></app-contact> -->
+        </div>
+      </li>
+
+      <li class="nav-item dropdown btn-group" dropdown>
+        <a dropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" mdbWavesEffect *ngIf="user">
+          <img [src]="user.avatar || 'assets/img/medium_TARS.png'" alt="img_avatar"
+            class="rounded-circle z-depth-0 redonded">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/profile']"><i class="fas fa-user"></i> My account</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logOut()"><i class="fas fa-power-off"></i> Log out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
