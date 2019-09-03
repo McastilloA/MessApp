@@ -27,8 +27,8 @@ export class NavComponent implements OnInit {
         if (this.user.friends) {
           this.user.friends = Object.values(this.user.friends);
         }
-      }, (error) =>{
-        console.log(error);
+      }, (error2) =>{
+        console.log(error2);
       });
     }, (error) => {
       console.log(error);
