@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Tarsenger
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
@@ -29,4 +29,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # MessApp
 Red social para tener amigos, la cual tiene chat
->>>>>>> 69fe1aab99c8b9e8677cf78267ba5098e7ff682e
