@@ -1,0 +1,38 @@
+.ma-to-ico{
+    margin-top: 40px;
+}
+
+.chat-init{
+    width: 600px;
+}
+
+.overflow-chat{
+    overflow-y:scroll;
+    height: 400px;
+}
+
+.alineadoTextoImagenAbajo{
+    vertical-align: text-bottom;
+}
+
+.zumbido{
+    width: 35px;
+}
+
+.text-shadow{
+    text-shadow: 2px 4px 10px black;
+}
+
+.mt-friend{
+    margin-top: 300px;
+}
+
+@media (max-width: 600px) {
+    .mt-friend{
+        display: none;
+    }
+
+    .chat-init{
+        width: 250px;
+    }
+}

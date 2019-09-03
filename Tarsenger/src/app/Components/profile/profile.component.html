@@ -1,0 +1,61 @@
+<div class="imageContainer">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-md-2 col-sm-12 mt-5 pt-5 text-center">
+        <div class="text-center" *ngIf="user">
+          <img [src]="croppedImage || user.avatar || 'assets/img/medium_TARS.png'" alt="img-avatar-profile" class="rounded img-fluid avatar_general rounded-circle">
+        </div>
+        <image-cropper
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="4 / 3"
+          [resizeToWidth]="150"
+          format="png"
+          (imageCropped)="imageCropped($event)">
+        </image-cropper>
+        <hr>
+        <div class="custom-file">
+          <input type="file" id="uploadFile" (change)="fileChangeEvent($event)">
+          <label class="custom-file-upload" for="uploadFile"><i class="fas fa-cloud-upload-alt"></i> Subir Imagen</label>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-12 pt-5 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <form action="" *ngIf="user">
+              <div class="md-form">
+                <input type="text" [(ngModel)]="user.fullName" name="fullName" class="form-control" id="fullName" mdbInputDirective required>
+                <label for="fullName">Nombre Completo</label>
+              </div>
+              <div class="md-form">
+                <input type="text" [(ngModel)]="user.nick" name="nick" class="form-control" id="nick" mdbInputDirective>
+                <label for="nick">Nickname</label>
+              </div>
+              <div class="md-form">
+                <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="email" disabled mdbInputDirective required>
+                <label for="email">Correo Electronico</label>
+              </div>
+              <div class="md-form">
+                <input type="number" [(ngModel)]="user.age" name="age" class="form-control" id="age" mdbInputDirective required>
+                <label for="age">Edad</label>
+              </div>
+              <div class="md-form">
+                <select class="browser-default custom-select" [(ngModel)]="user.status" name="status">
+                  <option selected>Seleccionar ...</option>
+                  <option value="En línea">Conectado</option>
+                  <option value="Desconectado">Desconectado</option>
+                  <option value="Ausente">Ausente</option>
+                  <option value="Ocupado">Ocupado</option>
+                </select>
+              </div>
+              <hr>
+              <div class="md-form">
+                <a (click)="saveSetting()" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<ul class="list-group list-group-flush" *ngIf="contact" routerLink="/conversation/{{ contact.uid }}">
+  <li class="list-group-item list-conversation">
+    <img src="/assets/img/{{ contact.status }}.png" alt="{{ contact.status }}" id="avatar" class="mr-5"
+      data-toggle="tooltip" data-placement="top" title="{{ contact.status }}" class="rounded-circle">
+    <span> {{ contact.nick }} <small><{{ contact.email }}></small></span>
+  </li>
+  <hr>
+</ul>

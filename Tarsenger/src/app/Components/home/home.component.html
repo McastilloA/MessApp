@@ -1,0 +1,75 @@
+<div class="imageContainer">
+  <div class="container" *ngIf="user">
+    <div class="row">
+      <div class="col-md-2 mt-5 text-center">
+        <div>
+          <img [src]="user.avatar || 'assets/img/medium_TARS.png'" alt="img_avatar"
+            class="rounded avatar_general img-fluid rounded-circle">
+          <p class="text-muted">
+            <img src="/assets/img/{{ user.status }}.png" alt="{{ user.status }}" class="rounded-circle" id="avatar">
+            {{ user.status }}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-10 mt-5">
+        <h3>{{ user.fullName }}</h3>
+        <p class="text-muted">
+          {{ user.email }}
+        </p>
+        <div class="form-group" *ngIf="user">
+          <textarea class="form-control" rows="3" style="background-color: transparent" (keyup.enter)="addMessage()"
+            placeholder="Escribiendo un mensaje y presiona enter..." [(ngModel)]="user.messagEveryday"
+            name="messagEveryday"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="md-form">
+          <input type="text" class="form-control" id="search" mdbInputDirective [(ngModel)]="serchHome">
+          <label for="search"><i class="fas fa-search"></i> Buscar</label>
+        </div>
+      </div>
+      <div class="col-md-auto ma-to-ico">
+        <img src="/assets/img/logo_live_add.png" alt="logo_add" class="img-fluid" id="avatar" data-toggle="tooltip"
+          data-placement="top" title="agregar amigos" data-toggle="modal" data-target="#requestModal">
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3 *ngIf="user && user.friends">Amigos ({{ user.friends.length }} / {{ user.friends.length }})</h3>
+        <div *ngIf="user && user.friends">
+          <app-contact *ngFor="let friend of user.friends | search: serchHome" [uid]="friend"></app-contact>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Request -->
+<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center text-white bg-secondary">
+        <h4 class="modal-title w-100 font-weight-bold">Agregar amigo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3" (keyup.enter)="sendRequest()">
+        <div class="md-form mb-4">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="formEmail" class="form-control validate" [(ngModel)]="friendEmail" mdbInputDirective
+            required>
+          <label data-error="wrong" data-success="right" for="formEmail"> Correo Electronico</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <a class="btn btn-indigo text-white" (click)="sendRequest()">Enviar <i class="fas fa-paper-plane"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
