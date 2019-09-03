@@ -1,0 +1,46 @@
+<div class="imageContainer">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto text-center">
+        <div class="avatarFrameoffline mt-5 mb-5">
+          <img src="/assets/img/medium_tarsBot.png" alt="avatar_login" class="img-fluid rounded avatar_general">
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <div class="center">
+          <h3>Iniciar sesion</h3>
+        </div>
+        <p *ngIf="operation == 'register'">Ya tienes cuenta? <a (click)="operation = 'login'">Has click aquí</a></p>
+        <p *ngIf="operation == 'login'">No tienes cuenta? <a (click)="operation = 'register'">Has click aquí</a></p>
+        <form>
+          <div class="md-form">
+            <input *ngIf="operation == 'register'" [(ngModel)]="fullName" name="fullName" type="text" class="form-control" id="fullName" mdbInputDirective required>
+            <label *ngIf="operation == 'register'" for="fullName">Nombre Completo</label>
+          </div>
+          <div class="md-form">
+            <input *ngIf="operation == 'register'" [(ngModel)]="nick" name="nick" type="text" class="form-control" id="nick" mdbInputDirective>
+            <label *ngIf="operation == 'register'" for="nick">Nickname</label>
+          </div>
+          <div class="md-form">
+            <input *ngIf="operation == 'register'" [(ngModel)]="age" name="age" type="number" class="form-control" id="age" mdbInputDirective required>
+            <label *ngIf="operation == 'register'" for="age">Edad</label>
+          </div>
+          <div class="md-form">
+            <input [(ngModel)]="email" type="email" name="email" class="form-control" id="email" mdbInputDirective required>
+            <label for="email">Correo electrónico</label>
+          </div>
+          <div class="md-form">
+            <input [(ngModel)]="password" type="password" name="password" class="form-control" id="password" (keyup.enter)="login()" mdbInputDirective required>
+            <label for="password">Contraseña</label>
+          </div>
+          <div class="mt-3 center">
+            <a (click)="login()" *ngIf="operation == 'login'" class="btn btn-success btn-init">Iniciar sesión</a>
+            <a (click)="register()" *ngIf="operation == 'register'" class="btn btn-success btn-init">Regístrate</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

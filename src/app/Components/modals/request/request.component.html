@@ -1,0 +1,12 @@
+<div class="modal-dialog modal-frame modal-top" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="row d-flex justify-content-center align-items-center">
+        <img src="/assets/img/avatar.svg" alt="img_sender" id="avatar" class="mr-2 rounded-circle">
+        <p class="pt-3 pr-2">{{ currentRequest.sender }}<small class="text-muted"> te envió una solicitud de amistad</small></p>
+        <a type="button" class="btn btn-outline-success btn-sm" (click)="confirm()"><i class="fas fa-check"></i> Confirmar</a>
+        <a type="button" class="btn btn-outline-danger btn-sm" (click)="delete()"><i class="fas fa-times"></i> Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
